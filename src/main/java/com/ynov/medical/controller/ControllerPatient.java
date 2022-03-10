@@ -12,7 +12,7 @@ import com.ynov.medical.model.Patient;
 @RestController
 public class ControllerPatient {
 
-	@GetMapping("/patiens")
+	@GetMapping("/patients")
 	public List<Patient> getPatient() {
 
 		Patient newPatient = new Patient();
