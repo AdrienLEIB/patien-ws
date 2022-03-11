@@ -9,6 +9,17 @@ public class Patient {
 	public Date dateSupported;
 	private List<Pathologie> listPatho;
 
+	public Patient() {
+
+	}
+
+	public Patient(Integer id, String name, Date date) {
+		this.id = id;
+		this.name = name;
+		this.dateSupported = date;
+
+	}
+
 	public Integer getId() {
 		return id;
 	}
