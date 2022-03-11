@@ -1,4 +1,4 @@
-package com.ynov.medical.controller;
+package com.ynov.medical.patientws.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ynov.medical.model.Patient;
+import com.ynov.medical.patiensws.model.Patient;
 
 @RestController
 public class ControllerPatient {

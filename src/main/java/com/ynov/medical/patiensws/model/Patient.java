@@ -1,4 +1,4 @@
-package com.ynov.medical.model;
+package com.ynov.medical.patiensws.model;
 
 import java.util.Date;
 import java.util.List;
