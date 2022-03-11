@@ -5,13 +5,13 @@ ___________________
 
 1. mongo d'installé et lancé en local sur le port 27017 (defaut)
 
-- sur MacOS
-brew tap mongodb/brew
-brew install mongodb-community@5.0
+- sur MacOS : <br/>
+brew tap mongodb/brew <br/>
+brew install mongodb-community@5.0 <br/>
 mongo
 
 
-- sur Windows
+- sur Windows : <br/>
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 
