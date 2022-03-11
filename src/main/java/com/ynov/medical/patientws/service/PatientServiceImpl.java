@@ -1,17 +1,18 @@
 package com.ynov.medical.patientws.service;
 
-import java.util.Collection;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ynov.medical.patiensws.model.Patient;
-import com.ynov.medical.patientws.dao.IPatientDao;
+import com.ynov.medical.patientws.dao.PatientDaoImpl;
 
+@Service
 public class PatientServiceImpl implements PatientService {
 
 	@Autowired
-	IPatientDao myDao;
+	PatientDaoImpl myDao;
 
 	@Override
 	public Patient createPatient(Patient p) {
@@ -21,19 +22,19 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Collection<Patient> getAllPatients() {
+	public List<Patient> getAllPatients() {
 		// TODO Auto-generated method stub
 		return myDao.findAll();
 	}
 
 	@Override
-	public Optional<Patient> findPatientById(Integer id) {
+	public Patient findPatientById(String id) {
 		// TODO Auto-generated method stub
-		return myDao.findById(id);
+		return myDao.findPatientById(id);
 	}
 
 	@Override
-	public void deletePatientById(Integer id) {
+	public void deletePatientById(String id) {
 		// TODO Auto-generated method stub
 		myDao.deleteById(id);
 

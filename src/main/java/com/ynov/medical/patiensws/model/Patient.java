@@ -1,7 +1,6 @@
 package com.ynov.medical.patiensws.model;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,27 +9,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Patient {
 
 	@Id
-	private Integer id;
-	private String name;
+	public String id;
+	public String name;
 	public Date dateSupported;
-	private List<Pathologie> listPatho;
+	// private List<Pathologie> listPatho;
 
 	public Patient() {
 
 	}
 
-	public Patient(Integer id, String name, Date date) {
+	public Patient(String id, String name, Date date) {
 		this.id = id;
 		this.name = name;
 		this.dateSupported = date;
 
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -50,18 +49,9 @@ public class Patient {
 		this.dateSupported = dateSupported;
 	}
 
-	public List<Pathologie> getListPatho() {
-		return listPatho;
-	}
-
-	public void setListPatho(List<Pathologie> listPatho) {
-		this.listPatho = listPatho;
-	}
-
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", name=" + name + ", dateSupported=" + dateSupported + ", listPatho=" + listPatho
-				+ "]";
+		return "Patient [id=" + id + ", name=" + name + ", dateSupported=" + dateSupported + "]";
 	}
 
 }

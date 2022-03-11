@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ynov.medical.patiensws.model.Pathologie;
 
 @RestController
-public class ControllerPathologie {
+public class PathologieController {
 
 	@GetMapping("/pathologies")
 	public List<Pathologie> getPathologies() {

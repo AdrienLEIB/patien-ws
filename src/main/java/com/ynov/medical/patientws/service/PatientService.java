@@ -1,7 +1,6 @@
 package com.ynov.medical.patientws.service;
 
-import java.util.Collection;
-import java.util.Optional;
+import java.util.List;
 
 import com.ynov.medical.patiensws.model.Patient;
 
@@ -9,10 +8,10 @@ public interface PatientService {
 
 	public Patient createPatient(Patient p);
 
-	public Collection<Patient> getAllPatients();
+	public List<Patient> getAllPatients();
 
-	public Optional<Patient> findPatientById(Integer id);
+	public Patient findPatientById(String id);
 
-	public void deletePatientById(Integer id);
+	public void deletePatientById(String id);
 
 }
