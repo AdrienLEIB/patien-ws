@@ -1,14 +1,13 @@
 package com.ynov.medical.patiensws.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-public class Patient implements Serializable {
+@Document(collection = "patient")
+public class Patient {
 
 	@Id
 	private Integer id;
@@ -57,6 +56,12 @@ public class Patient implements Serializable {
 
 	public void setListPatho(List<Pathologie> listPatho) {
 		this.listPatho = listPatho;
+	}
+
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", name=" + name + ", dateSupported=" + dateSupported + ", listPatho=" + listPatho
+				+ "]";
 	}
 
 }

@@ -1,18 +1,11 @@
 package com.ynov.medical.patientws.dao;
 
-import java.net.UnknownHostException;
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import com.ynov.medical.patiensws.model.Patient;
 
-public interface IPatientDao extends JpaRepository<Patient, Integer> {
-
-	public List<Patient> findPatient() throws UnknownHostException;
-
-	public Patient findPatientById(Integer id);
-
-	public boolean savePatient(Patient p);
+@Repository
+public interface IPatientDao extends MongoRepository<Patient, Integer> {
 
 }
