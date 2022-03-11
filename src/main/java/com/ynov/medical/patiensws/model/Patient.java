@@ -1,9 +1,16 @@
 package com.ynov.medical.patiensws.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Patient {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Patient implements Serializable {
+
+	@Id
 	private Integer id;
 	private String name;
 	public Date dateSupported;

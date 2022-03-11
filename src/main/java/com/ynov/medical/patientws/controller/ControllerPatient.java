@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ynov.medical.patiensws.model.Patient;
+import com.ynov.medical.patientws.dao.IPatientDao;
 
 @RestController
 public class ControllerPatient {
+
+	@Autowired
+	IPatientDao myDao;
 
 	public static List<Patient> listPatients = new ArrayList<Patient>();
 	static {
@@ -47,6 +54,13 @@ public class ControllerPatient {
 		}
 		// Patient p = listPatients.get(id);
 		return null;
+	}
+
+	@PostMapping("/patients/add")
+	public Patient addPatientToDatabasee(@RequestBody Patient newPatient) {
+
+		return myDao.save(newPatient);
+
 	}
 
 	public void setPatient(Patient p) {
