@@ -27,8 +27,7 @@ public class Patient {
 	}
 
 	public Patient(String name) {
-		UUID uuid = UUID.randomUUID();
-		this.id = uuid.toString();
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 
 	}

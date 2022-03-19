@@ -3,6 +3,7 @@ package com.ynov.medical.patientws.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class PatientController {
 	@GetMapping("/patients/add")
 	public ResponseEntity<Patient> createPatient(@RequestBody Patient p) {
 
-		System.out.println(p);
+		p.id = UUID.randomUUID().toString();
 		Patient patient = patientService.createORUpdatePatient(p);
 		if (Objects.isNull(patient)) {
 			return ResponseEntity.noContent().build();
