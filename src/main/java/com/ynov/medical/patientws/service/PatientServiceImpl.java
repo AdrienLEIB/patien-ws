@@ -15,7 +15,7 @@ public class PatientServiceImpl implements PatientService {
 	PatientDaoImpl myDao;
 
 	@Override
-	public Patient createPatient(Patient p) {
+	public Patient createORUpdatePatient(Patient p) {
 		// TODO Auto-generated method stub
 		return myDao.save(p);
 

@@ -1,6 +1,6 @@
 package com.ynov.medical.patiensws.model;
 
-import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,17 +11,25 @@ public class Patient {
 	@Id
 	public String id;
 	public String name;
-	public Date dateSupported;
+	public String idProfessional;
 	// private List<Pathologie> listPatho;
+
+	public String getIdProfessional() {
+		return idProfessional;
+	}
+
+	public void setIdProfessional(String idProfessional) {
+		this.idProfessional = idProfessional;
+	}
 
 	public Patient() {
 
 	}
 
-	public Patient(String id, String name, Date date) {
-		this.id = id;
+	public Patient(String name) {
+		UUID uuid = UUID.randomUUID();
+		this.id = uuid.toString();
 		this.name = name;
-		this.dateSupported = date;
 
 	}
 
@@ -41,17 +49,9 @@ public class Patient {
 		this.name = name;
 	}
 
-	public Date getDateSupported() {
-		return dateSupported;
-	}
-
-	public void setDateSupported(Date dateSupported) {
-		this.dateSupported = dateSupported;
-	}
-
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", name=" + name + ", dateSupported=" + dateSupported + "]";
+		return "Patient [id=" + id + ", name=" + name + ", idProfessional=" + idProfessional + "]";
 	}
 
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -27,14 +26,16 @@ public class PatientController {
 		return patientService.getAllPatients();
 	}
 
-	@PostMapping("/patient/add")
+	@GetMapping("/patients/add")
 	public ResponseEntity<Patient> createPatient(@RequestBody Patient p) {
-		Patient patientAdded = patientService.createPatient(p);
-		if (Objects.isNull(patientAdded)) {
+
+		System.out.println(p);
+		Patient patient = patientService.createORUpdatePatient(p);
+		if (Objects.isNull(patient)) {
 			return ResponseEntity.noContent().build();
 		}
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(patientAdded.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(patient.getId())
+				.toUri();
 		return ResponseEntity.created(location).build();
 	}
 

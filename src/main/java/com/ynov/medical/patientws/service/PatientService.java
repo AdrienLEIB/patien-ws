@@ -6,7 +6,7 @@ import com.ynov.medical.patiensws.model.Patient;
 
 public interface PatientService {
 
-	public Patient createPatient(Patient p);
+	public Patient createORUpdatePatient(Patient p);
 
 	public List<Patient> getAllPatients();
 
