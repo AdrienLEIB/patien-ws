@@ -24,6 +24,12 @@ public class Professional {
 		return longitude;
 	}
 
+	@Override
+	public String toString() {
+		return "Professional [id=" + id + ", name=" + name + ", speciality=" + speciality + ", longitude=" + longitude
+				+ ", latitude=" + latitude + "]";
+	}
+
 	public void setLongitude(int longitude) {
 		this.longitude = longitude;
 	}
