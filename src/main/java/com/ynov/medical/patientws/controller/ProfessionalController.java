@@ -1,15 +1,16 @@
 package com.ynov.medical.patientws.controller;
 
-import java.util.Arrays;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,23 +19,25 @@ import com.ynov.medical.patiensws.model.Professional;
 @RestController
 public class ProfessionalController {
 
-	public RestTemplate restTemplate;
+	@GetMapping("/professionals")
+	public String getAll() throws Exception {
+		String uri = "http://127.0.0.1:5000/professionals/";
 
-	@RequestMapping("/professionals")
-	public String getAll() {
-		String uri = "http://127.0.0.1:5000/professionals";
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uri)).build();
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		return restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
+		System.out.println(response.body());
+
+		return response.body();
 	}
 
 	@GetMapping("/professionals/find")
 	public List<Professional> postBody(@RequestBody Professional pro) {
 
 		String url = "http://127.0.0.1:5000/professionals/find";
+		RestTemplate restTemplate = new RestTemplate();
 
 		HttpHeaders headers = new HttpHeaders();
 
