@@ -4,15 +4,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.ynov.medical.patiensws.model.Professional;
 
@@ -28,27 +23,23 @@ public class ProfessionalController {
 
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		System.out.println(response.body());
-
 		return response.body();
 	}
 
 	@GetMapping("/professionals/find")
-	public List<Professional> postBody(@RequestBody Professional pro) {
+	public String postBody(@RequestBody Professional pro) throws Exception {
 
-		String url = "http://127.0.0.1:5000/professionals/find";
-		RestTemplate restTemplate = new RestTemplate();
+		String url = "http://127.0.0.1:5000/professionals/find?speciality=" + pro.speciality + "&latitude="
+				+ pro.latitude + "&longitude=" + pro.longitude;
 
-		HttpHeaders headers = new HttpHeaders();
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder() //
+				.uri(URI.create(url)) //
+				.build();
 
-		// can set the content Type
-		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		headers.add("speciality", pro.speciality);
-
-		HttpEntity<String> httpEntity = new HttpEntity<>("some body", headers);
-
-		return (List<Professional>) restTemplate.postForObject(url, httpEntity, Professional.class);
+		return response.body();
 	}
 
 }
