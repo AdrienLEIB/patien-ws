@@ -37,6 +37,9 @@ public class ProfessionalController {
 				.uri(URI.create(url)) //
 				.build();
 
+		// .setHeader(HttpHeaders.CONTENT_TYPE, "application/json") //
+		// .setHeader("speciality", pro.speciality) //
+
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 		return response.body();
