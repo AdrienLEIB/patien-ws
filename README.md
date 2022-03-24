@@ -22,3 +22,6 @@ mvn clean install
 
 3. Faites tourner l'application dans un JVM
 mvn clean spring-boot:run
+
+# Run the project
+mvn spring-boot:run
